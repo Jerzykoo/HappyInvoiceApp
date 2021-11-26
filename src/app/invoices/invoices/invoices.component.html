@@ -1,0 +1,36 @@
+<div class="invoice" *ngFor="let invoice of (invoices | async)">
+    <p>Nazwa klienta: {{invoice.client}}</p>
+    <p>Data dodania: {{invoice.dateAdded}}</p>
+    <p>Id klienta: {{invoice.invoiceId}}</p>
+    <table>
+        <!-- <li *ngFor="let client of clientsList "> -->
+        <thead>
+            <tr>
+                <td>Nazwa</td>
+                <td>Ilość</td>
+                <td>Kwota netto</td>
+                <td>Stawka vat</td>
+                <td>Kwota brutto</td>
+            </tr>
+        </thead>
+        <tr *ngFor="let item of invoice.items">
+            <td>
+                {{item.name}}
+            </td>
+            <td>
+                {{item.count}}
+            </td>
+            <td>
+                {{item.netValue}}
+            </td>
+            <td>
+                {{item.vat}}
+            </td>
+            <td>
+                {{item.grossValue}}
+            </td>
+        </tr>
+    </table>
+    <button mat-raised-button color="warn" (click)="onRemoveClick(invoice.id!) ">Usuń</button>
+    <button mat-raised-button color="basic" (click)="onEditClick(invoice.id!)">Edytuj</button>
+</div>

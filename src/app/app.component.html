@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    <span>HappyInvoice</span>
+    <span class="links">
+        <button mat-button routerLink="/">Strona główna</button>
+        <button mat-button routerLink="/clients">Lista klientów</button>
+        <button mat-button routerLink="/new-client">Nowy klient</button>
+        <button mat-button routerLink="/invoices">Lista faktur</button>
+        <button mat-button routerLink="/new-invoice">Nowa faktura</button>
+    </span>
+</mat-toolbar>
+<main>
+    <mat-card>
+        <router-outlet></router-outlet>
+    </mat-card>
+</main>

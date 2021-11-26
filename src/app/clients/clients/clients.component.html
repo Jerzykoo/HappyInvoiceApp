@@ -1,0 +1,30 @@
+<!-- <h2>
+    {{ title }}
+</h2> -->
+<!-- <button (click)="onShowListClick()">Show/hide clients</button> -->
+<table>
+    <!-- <li *ngFor="let client of clientsList "> -->
+    <thead>
+        <tr>
+            <td>Firma</td>
+            <td>Nip</td>
+            <td>Adres</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tr *ngFor="let client of (clientsObs | async) ">
+        <td>
+            {{ client.name }}
+        </td>
+        <td>
+            {{ client.nip }}
+        </td>
+        <td>
+            {{ client.city}} {{ client.postcode}}, {{ client.address }}
+        </td>
+        <td>
+            <button mat-raised-button color="warn" (click)="onRemoveClick(client.id!) ">Usuń</button>
+            <button mat-raised-button color="basic" (click)="onEditClick(client.id!)">Edytuj</button>
+        </td>
+    </tr>
+</table>

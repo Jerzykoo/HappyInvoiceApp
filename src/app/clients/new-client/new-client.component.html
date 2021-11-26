@@ -1,0 +1,24 @@
+<div class="form">
+    <mat-form-field>
+        <mat-label>Nazwa firmy</mat-label>
+        <input matInput placeholder="Nazwa firmy" [formControl]="$any(newClientFG).controls['name']">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Nip</mat-label>
+        <input matInput placeholder="Nip" [formControl]="$any(newClientFG).controls['nip']">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Miasto</mat-label>
+        <input matInput placeholder="Miasto" [formControl]="$any(newClientFG).controls['city']">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Kod pocztowy</mat-label>
+        <input matInput placeholder="Kod pocztowy" [formControl]="$any(newClientFG).controls['postcode']">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Adres</mat-label>
+        <input matInput placeholder="Adres" [formControl]="$any(newClientFG).controls['address']">
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="newClientFG.invalid" (click)="onClientSave()">{{editMode ? 'Zapisz zmiany'  : 'Dodaj klienta'}}</button>
+</div>
+<!-- <pre>{{newClientFG.value | json}}</pre> -->

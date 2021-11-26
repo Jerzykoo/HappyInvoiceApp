@@ -1,0 +1,48 @@
+<div class="new-invoice">
+    <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Klient" matInput [formControl]="$any(newInvoiceFG).controls['client']" [matAutocomplete]="auto" />
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of clientsNames" [value]="option">
+                {{ option }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field>
+        <input type="text" placeholder="Data dodania" matInput [formControl]="$any(newInvoiceFG).controls['dateAdded']" />
+    </mat-form-field>
+    <mat-form-field>
+        <input type="text" placeholder="Numer faktury" matInput [formControl]="$any(newInvoiceFG).controls['invoiceId']" />
+    </mat-form-field>
+
+</div>
+<div>Pozycje</div>
+<button mat-flat-button color="primary" class="new-item" (click)="onItemAdd()">Dodaj pozycję</button>
+<div class="items">
+    <div class="item" *ngFor="let item of $any(newInvoiceFG).controls['items']['controls']">
+        <mat-form-field class="field">
+            <input matInput placeholder="Nazwa" [formControl]="$any(item).controls['name']">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <input matInput placeholder="Ilość" [formControl]="$any(item).controls['count']">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <input matInput placeholder="Kwota netto" [formControl]="$any(item).controls['netValue']">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <input type="text" placeholder="Stawka VAT" matInput [formControl]="$any(item).controls['vat']" [matAutocomplete]="vat" />
+            <mat-autocomplete autoActiveFirstOption #vat="matAutocomplete">
+                <mat-option *ngFor="let option of vatOptions" [value]="option">
+                    {{ option }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field class="field">
+            <input matInput placeholder="Kwota brutto" [formControl]="$any(item).controls['grossValue']">
+        </mat-form-field>
+
+    </div>
+</div>
+<button mat-flat-button color="primary" (click)="onInvoiceSave()">{{editMode ? 'Zapisz fakturę' : 'Dodaj fakturę'}}</button>
+<!-- <div>
+    <pre>{{newInvoiceFG.value | json}}</pre>
+</div> -->
